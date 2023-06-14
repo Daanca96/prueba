@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The Waterfront</title>
+
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="app.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="aframe.min.js"></script>
+  <script src="aframe-animation-component.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader__spinner"></div>
+  </div>
+
+  <!-- Popup 
+  <div class="popup">
+    <div class="popup__container">
+      <p class="popup__text">Enter your email address or skip.</p>
+      <input class="popup__input" type="email" name="email" placeholder="Email address" required>
+
+      <div class="popup__subcontainer">
+        <span class="popup__skip">Skip</span> <span>or</span> <span class="popup__submit">Submit</span>
+      </div>
+    </div>
+  </div>-->
+
+  <a-scene>
+    <!--Text not working on VR headset -->
+    <div class="fact-text">
+      <p>You've learned <span id="facts"> </span> / 3 facts about The Waterfront.</p>
+    </div>
+  
+    <a-sky src="hola.jpg" rotation="0 -130 0"></a-sky>
+
+    <a-entity id="main-camera-wrapper" position="0.43 4.06 4.92" rotation="0 -2.29 0">
+      <a-camera id="main-camera" visible="true" wasd-controls="enabled: false; easing: 10; acceleration: 75; fly: false;"
+      cursor="rayOrigin: mouse;" raycaster="objects: .clickable">
+        <a-cursor id="fuse-cursor" objects=".clickable" fuse="true" position="0 0 -1" rotation="0 0 0"
+        scale="1 1 1" geometry="radiusInner: 0.02; radiusOuter: 0.03; thetaLength: 360; thetaStart: 90;"
+        color="blue" opacity="1" shader="flat" repeat="1 1" visible="true"></a-cursor>
+
+        <a-ring id="fuse-progress" position="0 0 -0.999" rotation="0 0 0" scale="1 1 1"
+        radius-inner="0.02" radius-outer="0.03" theta-length="360" theta-start="90" color="#348aa7"
+        opacity="0" shader="flat" repeat="1 1" visible="true" class="clickable" animation="startEvents: fusing; property: geometry.thetaLength; to: 0; dur: 1500; easing: linear; delay: 0; dir: normal; loop: 0; from: 360;"
+        animation__1="startEvents: fusing; property: opacity; to: 1; dur: 500; easing: linear; delay: 0; dir: normal; loop: 0; from: 0;"></a-ring>
+      </a-camera>
+    </a-entity>
+
+
+<!--position="horizontal vertical fondo"-->
+    <!-- Sphere 1 -->
+    <a-sphere id="tip-1" 
+    position="-4 6 8" 
+    rotation="0 140 0"
+    scale="0.5 0.5 0.5" radius="1"  color="#FFFFFF" opacity="0" shader="flat" side="double" repeat="1 1" visible="true" class="clickable" animation="property: scale; to: 0.35 0.35 0.35; dur: 2000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: true; ">
+      <a-image src="view.png" z-index="9999;"></a-image>
+    </a-sphere>
+
+    <a-text id="tip-1-text" 
+    position="-4 7 8" 
+    rotation="0 140 0"
+    scale="1.75 1.75 1.75" value="Las Botellas pasan por una maquina que les quita tapas y etiquetas."
+    font="https://cdn.aframe.io/fonts/Roboto-msdf.json" align="left" opacity="0" color="#000000" wrap-count="26.38"
+    letter-spacing="0" line-height="80.00" width="2.52" height="0" side="double" anchor="center"
+    visible="true" animation="startEvents: trigger-clicked; property: text.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+    animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-text>
+
+    <a-plane id="tip-1-background" 
+    position="-4 7 8" 
+    rotation="0 140 0"
+    scale="0.75 0.75 0.75" width="3.00" height="1.5" color="yellow" opacity="0" shader="flat"
+    side="double" metalness="0.5" roughness="1" repeat="1 1" visible="true" animation="startEvents: trigger-clicked; property: material.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+    animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-plane>
+
+<!-- Sphere 2 -->
+<a-sphere id="tip-2" position="-5 6 4" rotation="0 60 0"
+scale="0.5 0.5 0.5" radius="1"  color="#FFFFFF" opacity="0" shader="flat" side="double" repeat="1 1" visible="true" class="clickable" animation="property: scale; to: 0.35 0.35 0.35; dur: 2000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: true; ">
+  <a-image src="view.png" z-index="9999;"></a-image>
+</a-sphere>
+
+<a-text id="tip-2-text" position="-5 5 4.5" rotation="0 60 0"
+scale="0.75 0.75 0.75" value="Luego de pasar por Control de calidad, una maquina las pica en forma de escamas."
+font="https://cdn.aframe.io/fonts/Roboto-msdf.json" align="left" opacity="0" color="#000000" wrap-count="26.38"
+letter-spacing="0" line-height="80.00" width="2.52" height="0" side="double" anchor="center"
+visible="true" animation="startEvents: trigger-clicked; property: text.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-text>
+
+<a-plane id="tip-2-background" position="-5 5 4.5" rotation="0 60 0"
+scale="0.75 0.75 0.75" width="3.00" height="1.5" color="cyan" opacity="0" shader="flat"
+side="double" metalness="0.5" roughness="1" repeat="1 1" visible="true" animation="startEvents: trigger-clicked; property: material.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-plane>
+
+<!-- Sphere 3 -->
+<a-sphere id="tip-3" position="-5 6.5 -3" rotation="0 60 0"
+scale="1 1 1" radius="1"  color="#FFFFFF" opacity="0" shader="flat" side="double" repeat="1 1" visible="true" class="clickable" animation="property: scale; to: 0.35 0.35 0.35; dur: 2000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: true; ">
+  <a-image src="view.png" z-index="9999;"></a-image>
+</a-sphere>
+
+<a-text id="tip-3-text" position="-2 7 0" rotation="0 60 0"
+scale="0.75 0.75 0.75" value="Las escamas pasan por una maquina de lavado y secado."
+font="https://cdn.aframe.io/fonts/Roboto-msdf.json" align="left" opacity="0" color="#000000" wrap-count="26.38"
+letter-spacing="0" line-height="80.00" width="2.52" height="0" side="double" anchor="center"
+visible="true" animation="startEvents: trigger-clicked; property: text.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-text>
+
+<a-plane id="tip-3-background" position="-2 7 0" rotation="0 60 0"
+scale="0.75 0.75 0.75" width="3.00" height="1.5" color="pink" opacity="0" shader="flat"
+side="double" metalness="0.5" roughness="1" repeat="1 1" visible="true" animation="startEvents: trigger-clicked; property: material.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-plane>
+
+<!-- Sphere 4 -->
+<a-sphere id="tip-4" position="3.5 4 0" rotation="0 -30 0"   
+scale="0.5 0.5 0.5" radius="1"  color="#FFFFFF" opacity="0" shader="flat" side="double" repeat="1 1" visible="true" class="clickable" animation="property: scale; to: 0.35 0.35 0.35; dur: 2000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: true; ">
+  <a-image src="view.png" z-index="9999;"></a-image>
+</a-sphere>
+
+<a-text id="tip-4-text" position="7.5 4.5 0" rotation="0 -30 0"
+scale="0.75 0.75 0.75" value="Las escamas entran a una maquina que derrite el plastico y les da forma de cordon caliente."
+font="https://cdn.aframe.io/fonts/Roboto-msdf.json" align="left" opacity="0" color="#000000" wrap-count="26.38"
+letter-spacing="0" line-height="80.00" width="5.52" height="0" side="double" anchor="center"
+visible="true" animation="startEvents: trigger-clicked; property: text.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-text>
+
+<a-plane id="tip-4-background" position="7.5 4.5 0" rotation="0 -30 0"
+scale="0.75 0.75 0.75" width="6.50" height="2.12" color="orange" opacity="0" shader="flat"
+side="double" metalness="0.5" roughness="1" repeat="1 1" visible="true" animation="startEvents: trigger-clicked; property: material.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-plane>
+
+<!-- Sphere 5 -->
+<a-sphere id="tip-5" position="7 5 7" rotation="0 -120 0"
+scale="1 1 1" radius="1"  color="#FFFFFF" opacity="0" shader="flat" side="double" repeat="1 1" visible="true" class="clickable" animation="property: scale; to: 0.35 0.35 0.35; dur: 2000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: true; ">
+  <a-image src="view.png" z-index="9999;"></a-image>
+</a-sphere>
+
+<a-text id="tip-5-text" position="4 6.5 6" rotation="0 -120 0"
+scale="0.75 0.75 0.75" value="Tras pasar por agua fria, los cordones se solidifican, Una maquina los corta para crear 'pellets'"
+font="https://cdn.aframe.io/fonts/Roboto-msdf.json" align="left" opacity="0" color="#000000" wrap-count="26.38"
+letter-spacing="0" line-height="80.00" width="2.52" height="0" side="double" anchor="center"
+visible="true" animation="startEvents: trigger-clicked; property: text.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-text>
+
+<a-plane id="tip-5-background" position="4 6.5 6" rotation="0 -120 0"
+scale="0.75 0.75 0.75" width="3.00" height="1.5" color="cyan" opacity="0" shader="flat"
+side="double" metalness="0.5" roughness="1" repeat="1 1" visible="true" animation="startEvents: trigger-clicked; property: material.opacity; to: 1; dur: 1000; easing: linear; elasticity: 400; delay: 0; dir: normal; loop: 0; "
+animation__1="startEvents: trigger-clicked; property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; elasticity: 400; delay: 0; dir: normal; loop: 0; "></a-plane>
+
+
+
+  </a-scene>
+</body>
+</html>
