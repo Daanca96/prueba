@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The Waterfront</title>
+
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="app.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="aframe.min.js"></script>
+  <script src="aframe-animation-component.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader__spinner"></div>
+  </div>
+
+  <!-- Popup 
+  <div class="popup">
+    <div class="popup__container">
+      <p class="popup__text">Enter your email address or skip.</p>
+      <input class="popup__input" type="email" name="email" placeholder="Email address" required>
+
+      <div class="popup__subcontainer">
+        <span class="popup__skip">Skip</span> <span>or</span> <span class="popup__submit">Submit</span>
+      </div>
+    </div>
+  </div>-->
+
+  <a-scene>
+    <!--Text not working on VR headset -->
+    <div class="fact-text">
+      <p>You've learned <span id="facts"> </span> / 3 facts about The Waterfront.</p>
+    </div>
+  
+    <a-sky src="museo.jpg" rotation="0 -130 0"></a-sky>
+
+    <a-entity id="main-camera-wrapper" position="0.43 4.06 4.92" rotation="0 -2.29 0">
+      <a-camera id="main-camera" visible="true" wasd-controls="enabled: false; easing: 10; acceleration: 75; fly: false;"
+      cursor="rayOrigin: mouse;" raycaster="objects: .clickable">
+        <a-cursor id="fuse-cursor" objects=".clickable" fuse="true" position="0 0 -1" rotation="0 0 0"
+        scale="1 1 1" geometry="radiusInner: 0.02; radiusOuter: 0.03; thetaLength: 360; thetaStart: 90;"
+        color="blue" opacity="1" shader="flat" repeat="1 1" visible="true"></a-cursor>
+
+        <a-ring id="fuse-progress" position="0 0 -0.999" rotation="0 0 0" scale="1 1 1"
+        radius-inner="0.02" radius-outer="0.03" theta-length="360" theta-start="90" color="#348aa7"
+        opacity="0" shader="flat" repeat="1 1" visible="true" class="clickable" animation="startEvents: fusing; property: geometry.thetaLength; to: 0; dur: 1500; easing: linear; delay: 0; dir: normal; loop: 0; from: 360;"
+        animation__1="startEvents: fusing; property: opacity; to: 1; dur: 500; easing: linear; delay: 0; dir: normal; loop: 0; from: 0;"></a-ring>
+      </a-camera>
+    </a-entity>
+
+
+
+
+  </a-scene>
+</body>
+</html>
